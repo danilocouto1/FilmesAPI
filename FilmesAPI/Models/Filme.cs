@@ -10,6 +10,7 @@ namespace FilmesAPI.Models
             Nome = nome;
             Genero = genero;
         }
+        [Key]
         [Required(ErrorMessage = "Codigo Obrigatorio")]
         public int Codigo { get; set; }
 
