@@ -2,9 +2,9 @@
 
 namespace FilmesAPI.Models
 {
-    public class Filmes
+    public class Filme
     {
-        public Filmes(int codigo, string nome, string genero)
+        public Filme(int codigo, string nome, string genero)
         {
             Codigo = codigo;
             Nome = nome;
