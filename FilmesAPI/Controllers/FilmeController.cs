@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FilmesAPI.Controllers
 {
@@ -16,16 +17,18 @@ namespace FilmesAPI.Controllers
         {
             addFilmes.Codigo = id++;
             listaFilmes.Add(addFilmes);
-            foreach (var filmes in listaFilmes)
-            {
-                Console.WriteLine(filmes);
-            }
         }
 
         [HttpGet]
         public IEnumerable<Filmes> Retornar()
         {
             return listaFilmes;
+        }
+
+        [HttpGet("{id}")]
+        public Filmes Retornar(int id)
+        {
+            return listaFilmes.FirstOrDefault(filme => filme.Codigo == id);
         }
 
     }
