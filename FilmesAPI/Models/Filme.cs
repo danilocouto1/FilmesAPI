@@ -4,12 +4,6 @@ namespace FilmesAPI.Models
 {
     public class Filme
     {
-        public Filme(int codigo, string nome, string genero)
-        {
-            Codigo = codigo;
-            Nome = nome;
-            Genero = genero;
-        }
         [Key]
         [Required(ErrorMessage = "Codigo Obrigatorio")]
         public int Codigo { get; set; }

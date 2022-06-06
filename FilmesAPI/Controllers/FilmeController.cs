@@ -1,4 +1,5 @@
 ﻿using FilmesAPI.Data;
+using FilmesAPI.Data.DTOs;
 using FilmesAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,8 +21,14 @@ namespace FilmesAPI.Controllers
 
         
         [HttpPost]
-        public IActionResult Adicionar([FromBody] Filme addFilme)
+        public IActionResult Adicionar([FromBody] CreateFilmeDto filmeDto)
         {
+            Filme addFilme = new Filme
+            { 
+                Nome = filmeDto.Nome,
+                Genero = filmeDto.Genero,
+            };
+
             _context.Filmes.Add(addFilme);
             _context.SaveChanges();
             return CreatedAtAction(nameof(Retornar), new {ID = addFilme.Codigo}, addFilme);
@@ -39,21 +46,27 @@ namespace FilmesAPI.Controllers
             Filme filme = _context.Filmes.FirstOrDefault(filme => filme.Codigo == id);
             if (filme != null)
             {
-                return Ok(filme);
+                ReadFilmeDto filmeDto = new ReadFilmeDto
+                {
+                    Nome = filme.Nome,
+                    Genero = filme.Genero,
+                    consulta = DateTime.Now
+                };
+                return Ok(filmeDto);
             }
             return NotFound();
         }
 
         [HttpPut("{id}")]
-        public IActionResult Atualizar(int id, [FromBody] Filme filmeAtt)
+        public IActionResult Atualizar(int id, [FromBody] UpdateFilmeDto filmeDto)
         {
             Filme filme = _context.Filmes.FirstOrDefault(filme => filme.Codigo == id);
             if (filme == null)
             {
                 return NotFound();
             }
-            filme.Nome = filmeAtt.Nome;
-            filme.Genero = filmeAtt.Genero;
+            filme.Nome = filmeDto.Nome;
+            filme.Genero = filmeDto.Genero;
             _context.SaveChanges();
             return NoContent();
         }
