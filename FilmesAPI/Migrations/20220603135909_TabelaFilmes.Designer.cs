@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FilmesAPI.Migrations
 {
-    [DbContext(typeof(FilmeContetx))]
+    [DbContext(typeof(DBContext))]
     [Migration("20220603135909_TabelaFilmes")]
     partial class TabelaFilmes
     {
