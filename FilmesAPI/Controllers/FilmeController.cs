@@ -44,5 +44,18 @@ namespace FilmesAPI.Controllers
             return NotFound();
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Atualizar(int id, [FromBody] Filme filmeAtt)
+        {
+            Filme filme = _context.Filmes.FirstOrDefault(filme => filme.Codigo == id);
+            if (filme == null)
+            {
+                return NotFound();
+            }
+            filme.Nome = filmeAtt.Nome;
+            filme.Genero = filmeAtt.Genero;
+            _context.SaveChanges();
+            return NoContent();
+        }
     }
 }
