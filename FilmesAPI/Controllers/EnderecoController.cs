@@ -69,19 +69,12 @@ namespace FilmesAPI.Controllers
         public IActionResult DeletaEndereco(int id)
         {
             Endereco endereco = _context.Enderecos.FirstOrDefault(endereco => endereco.Id == id);
-            Cinema cinema = _context.Cinemas.FirstOrDefault(cinema => cinema.EnderecoFK == id);
+            
             if (endereco == null)
             {
                 return NotFound();
-            }
-            else if (endereco != null && cinema == null)
-            {
-                _context.Remove(endereco);
-                _context.SaveChanges();
-                return NoContent();
-            }
+            }            
             _context.Remove(endereco);
-            _context.Remove(cinema);
             _context.SaveChanges();
             return NoContent();
         }
