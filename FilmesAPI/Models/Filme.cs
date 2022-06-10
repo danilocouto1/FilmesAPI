@@ -14,7 +14,7 @@ namespace FilmesAPI.Models
 
         [Required(ErrorMessage = "Genero Obrigatorio")]
         public string Genero { get; set; }
-
+        [JsonIgnore]
         public virtual List<Sessao> Sessoes { get; set; }
 
         public override string ToString()
