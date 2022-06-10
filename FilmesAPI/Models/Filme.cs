@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FilmesAPI.Models
 {
@@ -13,6 +14,8 @@ namespace FilmesAPI.Models
 
         [Required(ErrorMessage = "Genero Obrigatorio")]
         public string Genero { get; set; }
+
+        public virtual List<Sessao> Sessoes { get; set; }
 
         public override string ToString()
         {
