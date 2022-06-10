@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FilmesAPI.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20220610123915_Relacionamento n-n filmes-cinemas")]
-    partial class Relacionamentonnfilmescinemas
+    [Migration("20220610130854_Relacionamento n-n filmes-cinemas final")]
+    partial class Relacionamentonnfilmescinemasfinal
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -120,7 +120,7 @@ namespace FilmesAPI.Migrations
 
                     b.HasIndex("FilmeFk");
 
-                    b.ToTable("Sessaoes");
+                    b.ToTable("Sessoes");
                 });
 
             modelBuilder.Entity("FilmesAPI.Models.Cinema", b =>

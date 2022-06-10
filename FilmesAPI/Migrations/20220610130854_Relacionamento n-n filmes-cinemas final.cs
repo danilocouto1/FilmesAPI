@@ -4,12 +4,12 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace FilmesAPI.Migrations
 {
-    public partial class Relacionamentonnfilmescinemas : Migration
+    public partial class Relacionamentonnfilmescinemasfinal : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Sessaoes",
+                name: "Sessoes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -20,15 +20,15 @@ namespace FilmesAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sessaoes", x => x.Id);
+                    table.PrimaryKey("PK_Sessoes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Sessaoes_Cinemas_CinemaFK",
+                        name: "FK_Sessoes_Cinemas_CinemaFK",
                         column: x => x.CinemaFK,
                         principalTable: "Cinemas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Sessaoes_Filmes_FilmeFk",
+                        name: "FK_Sessoes_Filmes_FilmeFk",
                         column: x => x.FilmeFk,
                         principalTable: "Filmes",
                         principalColumn: "Codigo",
@@ -36,20 +36,20 @@ namespace FilmesAPI.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sessaoes_CinemaFK",
-                table: "Sessaoes",
+                name: "IX_Sessoes_CinemaFK",
+                table: "Sessoes",
                 column: "CinemaFK");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sessaoes_FilmeFk",
-                table: "Sessaoes",
+                name: "IX_Sessoes_FilmeFk",
+                table: "Sessoes",
                 column: "FilmeFk");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Sessaoes");
+                name: "Sessoes");
         }
     }
 }
